@@ -1,27 +1,24 @@
 package Kata2;
 
-import sun.applet.resources.MsgAppletViewer_zh_CN;
-
 import java.util.HashMap;
 import java.util.Map;
 
-public class Histogram {
+public class Histogram <T>{
 
-    private final int[] data;
+    private final T[] data;
+    Map<T,Integer> histogram = new HashMap<>();
 
-    public Histogram(int[] data) {
+    public Histogram(T[] data) {
         this.data = data;
     }
-    public int[] getData(){
+    public T[] getData(){
         return data;
     }
 
-    public Map<Integer,Integer> getHistogram(){
-        Map<Integer,Integer> histogram = new HashMap<>();
-
-        for (int value :
+    public Map<T,Integer> getHistogram(){
+        for (T value :
                 data) {
-            histogram.put(value, histogram.containsKey(value) ? histogram.get(value)+1 : 1);
+            histogram.put(value,histogram.containsKey(value) ? histogram.get(value) + 1 : 1);
         }
         return histogram;
     }
